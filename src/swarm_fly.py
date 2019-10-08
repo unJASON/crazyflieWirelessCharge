@@ -28,10 +28,10 @@ from cflib.utils.multiranger import Multiranger
 from cflib.crazyflie.syncCrazyflie import SyncCrazyflie
 
 
-URI1 = 'radio://0/00/2M/E7E7E7E7E7'
+URI1 = 'radio://0/20/2M/E7E7E7E7E7'
 URI2 = 'radio://0/90/2M/E7E7E7E7E7'
 URI3 = 'radio://0/100/2M/E7E7E7E7E7'
-URI4 = 'radio://0/80/2M/E7E7E7E7E7'
+URI4 = 'radio://0/10/2M/E7E7E7E7E7'
 
 
 
@@ -67,15 +67,24 @@ status_list = [
 DuplicablePositionHlCommander.set_class_status_list(status_list)
 
 
+# task1 = CFFlyTask(Crazyflie(), status1,[CFTrajectoryFactory.loop_generate(
+#     CFTrajectoryFactory.add(CFTrajectoryFactory.arch([-0.23,0.23*math.sqrt(3),1],[0.23,-0.23*math.sqrt(3),1],[0,0,1]),CFTrajectoryFactory.arch([0.23,-0.23*math.sqrt(3),1],[-0.23,0.23*math.sqrt(3),1],[0,0,1])),10)])
+# task2 = CFFlyTask(Crazyflie(), status2,[CFTrajectoryFactory.loop_generate(
+#     CFTrajectoryFactory.add(CFTrajectoryFactory.arch([-0.23,-0.23*math.sqrt(3),1],[0.23,0.23*math.sqrt(3),1],[0,0,1]),CFTrajectoryFactory.arch([0.23,0.23*math.sqrt(3),1],[-0.23,-0.23*math.sqrt(3),1],[0,0,1])),10)])
+# task3 = CFFlyTask(Crazyflie(), status3,[CFTrajectoryFactory.loop_generate(
+#     CFTrajectoryFactory.add(CFTrajectoryFactory.arch([0.46,0,1],[-0.46,0,1],[0,0,1]),CFTrajectoryFactory.arch([-0.46,0,1],[0.46,0,1],[0,0,1])),10)])
+
+radius = 0.92
 task1 = CFFlyTask(Crazyflie(), status1,[CFTrajectoryFactory.loop_generate(
-    CFTrajectoryFactory.add(CFTrajectoryFactory.arch([-0.23,0.23*math.sqrt(3),1],[0.23,-0.23*math.sqrt(3),1],[0,0,1]),CFTrajectoryFactory.arch([0.23,-0.23*math.sqrt(3),1],[-0.23,0.23*math.sqrt(3),1],[0,0,1])),2)])
+    CFTrajectoryFactory.add(CFTrajectoryFactory.arch([-radius/2,radius/2*math.sqrt(3),1],[radius/2,-radius/2*math.sqrt(3),1],[0,0,1]),CFTrajectoryFactory.arch([radius/2,-radius/2*math.sqrt(3),1],[-radius/2,radius/2*math.sqrt(3),1],[0,0,1])),2)])
 task2 = CFFlyTask(Crazyflie(), status2,[CFTrajectoryFactory.loop_generate(
-    CFTrajectoryFactory.add(CFTrajectoryFactory.arch([-0.23,-0.23*math.sqrt(3),1],[0.23,0.23*math.sqrt(3),1],[0,0,1]),CFTrajectoryFactory.arch([0.23,0.23*math.sqrt(3),1],[-0.23,-0.23*math.sqrt(3),1],[0,0,1])),2)])
+    CFTrajectoryFactory.add(CFTrajectoryFactory.arch([-radius/2,-radius/2*math.sqrt(3),1],[radius/2,radius/2*math.sqrt(3),1],[0,0,1]),CFTrajectoryFactory.arch([radius/2,radius/2*math.sqrt(3),1],[-radius/2,-radius/2*math.sqrt(3),1],[0,0,1])),2)])
 task3 = CFFlyTask(Crazyflie(), status3,[CFTrajectoryFactory.loop_generate(
-    CFTrajectoryFactory.add(CFTrajectoryFactory.arch([0.46,0,1],[-0.46,0,1],[0,0,1]),CFTrajectoryFactory.arch([-0.46,0,1],[0.46,0,1],[0,0,1])),2)])
-#task2 = CFFlyTask(Crazyflie(), status2, [CFTrajectoryFactory.line([-0.8,0.8,1],[0.8,-0.8,1]),CFTrajectoryFactory.line([0.8,-0.8,1],[-0.8,0.8,1])])
-#task3 = CFFlyTask(Crazyflie(), status3, [CFTrajectoryFactory.line([1.5,0,1],[-1.5,0,1]),CFTrajectoryFactory.line([-1.5,0,1],[1.5,0,1]),CFTrajectoryFactory.line([1.5,0,1],[-1.5,0,1]),CFTrajectoryFactory.line([-1.5,0,1],[1.5,0,1])])
-#task4 = CFFlyTask(Crazyflie(), status4, [CFTrajectoryFactory.line([0,1.5,1],[0,-1.5,1]),CFTrajectoryFactory.line([0,-1.5,1],[0,1.5,1]),CFTrajectoryFactory.line([0,1.5,1],[0,-1.5,1]),CFTrajectoryFactory.line([0,-1.5,1],[0,1.5,1])])
+    CFTrajectoryFactory.add(CFTrajectoryFactory.arch([radius,0,1],[-radius,0,1],[0,0,1]),CFTrajectoryFactory.arch([-radius,0,1],[radius,0,1],[0,0,1])),2)])
+
+# task2 = CFFlyTask(Crazyflie(), status2, [CFTrajectoryFactory.line([-0.8,0.8,1],[0.8,-0.8,1]),CFTrajectoryFactory.line([0.8,-0.8,1],[-0.8,0.8,1])])
+# task3 = CFFlyTask(Crazyflie(), status3, [CFTrajectoryFactory.line([1.5,0,1],[-1.5,0,1]),CFTrajectoryFactory.line([-1.5,0,1],[1.5,0,1]),CFTrajectoryFactory.line([1.5,0,1],[-1.5,0,1]),CFTrajectoryFactory.line([-1.5,0,1],[1.5,0,1])])
+# task4 = CFFlyTask(Crazyflie(), status4, [CFTrajectoryFactory.line([0,1.5,1],[0,-1.5,1]),CFTrajectoryFactory.line([0,-1.5,1],[0,1.5,1]),CFTrajectoryFactory.line([0,1.5,1],[0,-1.5,1]),CFTrajectoryFactory.line([0,-1.5,1],[0,1.5,1])])
 task4 = CFFlyTask(Crazyflie(), status4, [])
 
 
